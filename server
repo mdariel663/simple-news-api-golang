@@ -1,0 +1,10 @@
+# START AND COMPILING FOR AMD64
+if [[ -f "news-api-linux-amd64" ]]; then
+    chmod +x ./news-api-linux-amd64
+    ./news-api-linux-amd64 --country US --api-key XYZ --port 8080
+else
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o news-api-linux-amd64 main.go
+
+    chmod +x ./news-api-linux-amd64
+    ./news-api-linux-amd64 --country US --api-key XYZ --port 8080
+fi
